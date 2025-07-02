@@ -1,0 +1,72 @@
+@import "tailwindcss" important;
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --body-background: #ffffff;
+  --body-foreground: #171717;
+}
+
+.dark {
+  --body-background: #0f172a;
+  --body-foreground: #f1f5f9;
+}
+
+body {
+  background-color: var(--body-background);
+  color: var(--body-foreground);
+  transition: background-color 0.3s, color 0.3s;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 100vw;
+}
+
+/* Custom Quill min height */
+.quill-custom .ql-editor {
+  min-height: 300px;
+  padding: 1rem;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+/* global.css or a custom layer */
+.dark .ql-editor {
+  background-color: #1f2937;
+  /* Tailwind's gray-800 */
+  color: #f3f4f6;
+  /* Tailwind's gray-100 */
+}
+
+.dark .ql-toolbar {
+  background-color: #111827;
+  /* Tailwind's gray-900 */
+  border-color: #374151;
+  /* Tailwind's gray-700 */
+}
+
+.dark .ql-container {
+  border-color: #374151;
+}
+
+.dark .ql-editor::placeholder {
+  color: #9ca3af;
+  /* gray-400 */
+}
+
+.ql-editor.ql-blank::before {
+  content: attr(data-placeholder);
+  color: #9ca3af;
+  /* Tailwind gray-400 */
+  font-style: italic;
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  pointer-events: none;
+}
+
+.dark .ql-editor.ql-blank::before {
+  color: #6b7280;
+  /* Tailwind gray-500 */
+}
